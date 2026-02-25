@@ -1,0 +1,39 @@
+{
+  "network": "polygon",
+  "chainId": 137,
+  "startBlock": 83440318,
+  "deployedAt": "2026-02-25T06:26:02.414Z",
+  "deployer": "0xd4654500128dCbe45dd9E1F871Bf3CCEcd9615D1",
+  "contracts": {
+    "ClawPolyAccessController": {
+      "address": "0x8961c1E0490C9480e043a6d65a86c8495d1aF25f",
+      "constructorArgs": []
+    },
+    "ClawPolyEndpointRegistry": {
+      "address": "0x23D692A67bE966dcff33773AC4f27898ae55855F",
+      "constructorArgs": [
+        "0x8961c1E0490C9480e043a6d65a86c8495d1aF25f"
+      ]
+    },
+    "ClawPolyPricingRegistry": {
+      "address": "0x0b76D141422FbD9594D36e38b78f3303cc10b0Aa",
+      "constructorArgs": [
+        "0x8961c1E0490C9480e043a6d65a86c8495d1aF25f",
+        "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359"
+      ]
+    },
+    "ClawPolySearchReceipt": {
+      "address": "0x2009C3040fA9E5E432170900A3b426cC966Aa6CB",
+      "constructorArgs": []
+    },
+    "ClawPolyFeeVault": {
+      "address": "0x240cEbC44F2bc91B4d1AA69c82b12DC2f1Bf678B",
+      "constructorArgs": [
+        "0xd4654500128dCbe45dd9E1F871Bf3CCEcd9615D1"
+      ]
+    }
+  },
+  "tokens": {
+    "USDC": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359"
+  }
+}

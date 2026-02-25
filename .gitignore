@@ -20,7 +20,6 @@ typechain-types/
 
 # Generated deployments
 contracts/deployments/*.json
-web/src/config/deployments/polygon.json
 
 # IDE
 .vscode/
