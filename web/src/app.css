@@ -43,63 +43,72 @@
   --radius-full: 9999px;
 }
 
-/* === Base === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/*
+ * All custom base styles MUST go inside @layer base
+ * so Tailwind utility classes (in @layer utilities) can override them.
+ * Unlayered CSS always beats layered CSS per the cascade spec.
+ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-display);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--color-bg-primary);
+  }
+
+  #root {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Focus */
+  *:focus-visible {
+    outline: 2px solid var(--color-accent-teal);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--color-border-hover); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+  /* Selection */
+  ::selection {
+    background-color: rgba(13, 148, 136, 0.15);
+    color: var(--color-text-primary);
+  }
 }
 
-html {
-  font-family: var(--font-display);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  line-height: 1.7;
+/* Utility classes in the utilities layer so they can be overridden by Tailwind */
+@layer utilities {
+  .text-accent { color: var(--color-accent-teal); }
 }
 
-body {
-  min-height: 100vh;
-  background-color: var(--color-bg-primary);
-}
-
-#root {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* === Focus === */
-*:focus-visible {
-  outline: 2px solid var(--color-accent-teal);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-/* === Scrollbar === */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--color-border-hover); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
-
-/* === Selection === */
-::selection {
-  background-color: rgba(13, 148, 136, 0.15);
-  color: var(--color-text-primary);
-}
-
-/* === Accent text === */
-.text-accent { color: var(--color-accent-teal); }
-
-/* === Skeleton === */
+/* Animations — these are fine unlayered since they don't conflict with utilities */
 @keyframes skeleton-pulse {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.7; }
 }
-.skeleton {
-  animation: skeleton-pulse 1.5s ease-in-out infinite;
-  background: var(--color-bg-elevated);
+
+@layer components {
+  .skeleton {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    background: var(--color-bg-elevated);
+  }
 }
