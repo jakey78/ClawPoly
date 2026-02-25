@@ -18,7 +18,7 @@ import {
 export default function AddressPage() {
   const { address } = useParams<{ address: string }>();
 
-  const { data, isLoading, error, searchType } = useSearch({
+  const { data, isLoading, error, searchType, needsWallet } = useSearch({
     query: address || "",
     type: "address",
     enabled: !!address,
@@ -45,6 +45,19 @@ export default function AddressPage() {
           {address && <CopyButton text={address} />}
           <Badge variant="info">{searchType}</Badge>
         </div>
+
+        {/* Wallet needed */}
+        {needsWallet && (
+          <Card className="flex items-center gap-3">
+            <AlertTriangle
+              size={20}
+              style={{ color: "var(--color-accent-amber)" }}
+            />
+            <span style={{ color: "var(--color-text-secondary)" }}>
+              Connecting wallet… This query requires an x402 micro-payment.
+            </span>
+          </Card>
+        )}
 
         {/* Loading */}
         {isLoading && (

@@ -46,7 +46,25 @@ export function createAdapter(event: HandlerEvent) {
     },
   };
 
-  return { req, res, responsePromise };
+  return { req, res, responsePromise, resolve: storedResolve };
+}
+
+/** Wrap an async Vercel-style handler for Netlify. */
+export async function runHandler(
+  handler: (req: any, res: any) => Promise<any>,
+  event: HandlerEvent,
+): Promise<NetlifyResponse> {
+  const { req, res, responsePromise, resolve } = createAdapter(event);
+  try {
+    await handler(req, res);
+  } catch (err: any) {
+    resolve({
+      statusCode: 500,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: err.message || "Internal server error" }),
+    });
+  }
+  return responsePromise;
 }
 
 export interface NetlifyResponse {

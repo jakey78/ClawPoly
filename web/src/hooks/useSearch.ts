@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useWalletClient } from "wagmi";
+import { useAccount, useWalletClient } from "wagmi";
 import { fetchWithPayment, type PaymentPayload } from "@/lib/x402Client";
 import { useRecentSearches } from "./useRecentSearches";
 import { useCallback, useState } from "react";
@@ -38,6 +38,7 @@ interface UseSearchOptions {
 }
 
 export function useSearch({ query, type, params, enabled = true }: UseSearchOptions) {
+  const { isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const { addSearch } = useRecentSearches();
   const [lastPayment, setLastPayment] = useState<PaymentPayload | undefined>();
@@ -46,7 +47,7 @@ export function useSearch({ query, type, params, enabled = true }: UseSearchOpti
   const endpoint = ENDPOINT_MAP[resolvedType];
 
   const queryResult = useQuery<SearchResult>({
-    queryKey: ["search", resolvedType, query, params],
+    queryKey: ["search", resolvedType, query, params, !!walletClient],
     queryFn: async () => {
       const searchParams: Record<string, string> = {
         ...params,
@@ -74,7 +75,7 @@ export function useSearch({ query, type, params, enabled = true }: UseSearchOpti
       addSearch(query, resolvedType);
       return result;
     },
-    enabled: enabled && !!query.trim(),
+    enabled: enabled && !!query.trim() && isConnected && !!walletClient,
     retry: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
@@ -83,6 +84,7 @@ export function useSearch({ query, type, params, enabled = true }: UseSearchOpti
     ...queryResult,
     searchType: resolvedType,
     lastPayment,
+    needsWallet: enabled && !!query.trim() && (!isConnected || !walletClient),
   };
 }
 

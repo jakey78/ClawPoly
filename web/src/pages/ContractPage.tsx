@@ -18,7 +18,7 @@ import {
 export default function ContractPage() {
   const { address } = useParams<{ address: string }>();
 
-  const { data, isLoading, error } = useSearch({
+  const { data, isLoading, error, needsWallet } = useSearch({
     query: address || "",
     type: "contract",
     enabled: !!address,
@@ -64,6 +64,19 @@ export default function ContractPage() {
               <ExternalLink size={14} />
             </a>
           </div>
+        )}
+
+        {/* Wallet needed */}
+        {needsWallet && (
+          <Card className="flex items-center gap-3">
+            <AlertTriangle
+              size={20}
+              style={{ color: "var(--color-accent-amber)" }}
+            />
+            <span style={{ color: "var(--color-text-secondary)" }}>
+              Connecting wallet… This query requires an x402 micro-payment.
+            </span>
+          </Card>
         )}
 
         {/* Loading */}

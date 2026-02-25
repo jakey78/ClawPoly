@@ -20,7 +20,7 @@ import {
 export default function TransactionPage() {
   const { hash } = useParams<{ hash: string }>();
 
-  const { data, isLoading, error } = useSearch({
+  const { data, isLoading, error, needsWallet } = useSearch({
     query: hash || "",
     type: "tx",
     enabled: !!hash,
@@ -66,6 +66,19 @@ export default function TransactionPage() {
             </span>
             <CopyButton text={hash} />
           </div>
+        )}
+
+        {/* Wallet needed */}
+        {needsWallet && (
+          <Card className="flex items-center gap-3">
+            <AlertTriangle
+              size={20}
+              style={{ color: "var(--color-accent-amber)" }}
+            />
+            <span style={{ color: "var(--color-text-secondary)" }}>
+              Connecting wallet… This query requires an x402 micro-payment.
+            </span>
+          </Card>
         )}
 
         {/* Loading */}
