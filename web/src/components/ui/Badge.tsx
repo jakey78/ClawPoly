@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type BadgeVariant = "default" | "success" | "warning" | "error" | "teal" | "amber";
+type BadgeVariant = "default" | "success" | "warning" | "error" | "teal" | "amber" | "info";
 
 interface BadgeProps {
   variant?: BadgeVariant;
@@ -38,6 +38,11 @@ const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
     background: "rgba(245, 158, 11, 0.12)",
     color: "var(--color-accent-amber)",
     border: "1px solid rgba(245, 158, 11, 0.2)",
+  },
+  info: {
+    background: "rgba(167, 139, 250, 0.12)",
+    color: "var(--color-accent-purple)",
+    border: "1px solid rgba(167, 139, 250, 0.2)",
   },
 };
 

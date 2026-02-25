@@ -64,13 +64,16 @@ export default function SearchBar({
     <div className={`relative ${className}`}>
       <form onSubmit={handleSubmit}>
         <div
-          className="flex items-center gap-3 rounded-xl border transition-colors"
+          className="flex items-center gap-3 rounded-2xl transition-all duration-300"
           style={{
             backgroundColor: "var(--color-bg-card)",
-            borderColor: focused
-              ? "var(--color-accent-teal)"
-              : "var(--color-border-default)",
-            padding: isLg ? "0.75rem 1rem" : "0.5rem 0.75rem",
+            border: focused
+              ? "1px solid rgba(45, 212, 191, 0.5)"
+              : "1px solid var(--color-border)",
+            boxShadow: focused
+              ? "0 0 0 4px rgba(45, 212, 191, 0.08), 0 8px 32px rgba(45, 212, 191, 0.06)"
+              : "0 2px 8px rgba(0,0,0,0.2)",
+            padding: isLg ? "0.875rem 1.25rem" : "0.625rem 0.875rem",
           }}
         >
           <Search
@@ -80,6 +83,7 @@ export default function SearchBar({
                 ? "var(--color-accent-teal)"
                 : "var(--color-text-muted)",
               flexShrink: 0,
+              transition: "color 0.2s",
             }}
           />
 
@@ -93,7 +97,7 @@ export default function SearchBar({
             onKeyDown={handleKeyDown}
             placeholder="Search by address, tx hash, or contract..."
             autoFocus={autoFocus}
-            className="flex-1 bg-transparent outline-none font-mono"
+            className="flex-1 bg-transparent outline-none font-mono placeholder:text-[var(--color-text-muted)]"
             style={{
               color: "var(--color-text-primary)",
               fontSize: isLg ? "1rem" : "0.875rem",
@@ -102,10 +106,11 @@ export default function SearchBar({
 
           {typeInfo && (
             <div
-              className="flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-md"
+              className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg"
               style={{
-                backgroundColor: `color-mix(in srgb, ${typeInfo.color} 15%, transparent)`,
+                backgroundColor: `${typeInfo.color}15`,
                 color: typeInfo.color,
+                border: `1px solid ${typeInfo.color}25`,
               }}
             >
               <typeInfo.icon size={12} />
@@ -116,14 +121,17 @@ export default function SearchBar({
           <button
             type="submit"
             disabled={!query.trim()}
-            className="p-1.5 rounded-lg transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+            className="p-2 rounded-xl transition-all duration-200 cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed"
             style={{
-              backgroundColor: query.trim()
-                ? "var(--color-accent-teal)"
+              background: query.trim()
+                ? "linear-gradient(135deg, #2dd4bf, #14b8a6)"
                 : "transparent",
               color: query.trim()
-                ? "var(--color-bg-base)"
+                ? "#06060b"
                 : "var(--color-text-muted)",
+              boxShadow: query.trim()
+                ? "0 2px 8px rgba(45, 212, 191, 0.3)"
+                : "none",
             }}
           >
             <ArrowRight size={isLg ? 18 : 14} />
@@ -139,15 +147,19 @@ export default function SearchBar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-50 left-0 right-0 mt-2 rounded-xl border overflow-hidden"
+            className="absolute z-50 left-0 right-0 mt-2 rounded-xl overflow-hidden"
             style={{
               backgroundColor: "var(--color-bg-card)",
-              borderColor: "var(--color-border-default)",
+              border: "1px solid var(--color-border)",
+              boxShadow: "0 16px 48px rgba(0,0,0,0.4)",
             }}
           >
             <div
-              className="px-3 py-2 text-xs font-medium"
-              style={{ color: "var(--color-text-muted)" }}
+              className="px-4 py-2.5 text-xs font-semibold tracking-wide uppercase"
+              style={{
+                color: "var(--color-text-muted)",
+                borderBottom: "1px solid var(--color-border)",
+              }}
             >
               Recent Searches
             </div>
@@ -158,11 +170,11 @@ export default function SearchBar({
                   key={`${s.type}-${s.query}`}
                   type="button"
                   onMouseDown={() => handleRecentClick(s.query, s.type)}
-                  className="w-full flex items-center gap-3 px-3 py-2 transition-colors cursor-pointer"
+                  className="w-full flex items-center gap-3 px-4 py-2.5 transition-colors cursor-pointer"
                   style={{ color: "var(--color-text-primary)" }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor =
-                      "var(--color-bg-elevated)")
+                      "var(--color-bg-card-hover)")
                   }
                   onMouseLeave={(e) =>
                     (e.currentTarget.style.backgroundColor = "transparent")
@@ -171,7 +183,7 @@ export default function SearchBar({
                   <cfg.icon size={14} style={{ color: cfg.color }} />
                   <span className="font-mono text-sm truncate">{s.query}</span>
                   <span
-                    className="text-xs ml-auto"
+                    className="text-xs ml-auto font-medium"
                     style={{ color: "var(--color-text-muted)" }}
                   >
                     {cfg.label}

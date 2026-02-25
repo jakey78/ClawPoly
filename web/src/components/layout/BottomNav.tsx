@@ -16,10 +16,10 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
       style={{
-        background: "rgba(10, 10, 15, 0.95)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        borderTop: "1px solid var(--color-border)",
+        background: "rgba(6, 6, 11, 0.92)",
+        backdropFilter: "blur(20px) saturate(1.2)",
+        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
+        borderTop: "1px solid rgba(26, 26, 46, 0.8)",
       }}
       role="navigation"
       aria-label="Bottom navigation"
@@ -31,10 +31,10 @@ export default function BottomNav() {
             <Link
               key={path}
               to={path === "/search" ? "/" : path}
-              className="flex flex-col items-center justify-center no-underline min-w-[48px] min-h-[48px] rounded-xl transition-colors"
+              className="flex flex-col items-center justify-center no-underline min-w-[48px] min-h-[48px] rounded-xl transition-all duration-200"
               style={{
                 color: isActive
-                  ? "var(--color-accent-teal)"
+                  ? "#2dd4bf"
                   : "var(--color-text-muted)",
               }}
               aria-label={label}
@@ -42,13 +42,13 @@ export default function BottomNav() {
             >
               {center ? (
                 <div
-                  className="flex items-center justify-center w-12 h-12 rounded-full -mt-4"
+                  className="flex items-center justify-center w-12 h-12 rounded-2xl -mt-5"
                   style={{
-                    background: "var(--color-accent-teal)",
-                    boxShadow: "0 4px 20px rgba(45, 212, 191, 0.3)",
+                    background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
+                    boxShadow: "0 4px 24px rgba(45, 212, 191, 0.35)",
                   }}
                 >
-                  <Icon size={22} color="#0a0a0f" strokeWidth={2.5} />
+                  <Icon size={22} color="#06060b" strokeWidth={2.5} />
                 </div>
               ) : (
                 <>

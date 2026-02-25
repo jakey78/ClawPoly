@@ -28,10 +28,11 @@ export default function NotFound() {
         <div className="flex gap-4">
           <Link
             to="/"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 no-underline"
             style={{
-              backgroundColor: "var(--color-accent-teal)",
-              color: "var(--color-bg-base)",
+              background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
+              color: "#06060b",
+              boxShadow: "0 4px 16px rgba(45, 212, 191, 0.25)",
             }}
           >
             <Home size={16} />
@@ -39,10 +40,11 @@ export default function NotFound() {
           </Link>
           <Link
             to="/"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm border transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 no-underline"
             style={{
-              borderColor: "var(--color-border-default)",
+              border: "1px solid var(--color-border-hover)",
               color: "var(--color-text-primary)",
+              background: "rgba(255,255,255,0.02)",
             }}
           >
             <Search size={16} />
