@@ -1,5 +1,9 @@
-import type { VercelRequest } from "@vercel/node";
 import type { PaymentRequiredInfo, PaymentPayload } from "./types";
+
+/** Minimal request shape used by x402 helpers — compatible with both Vercel and Netlify adapters. */
+interface RequestWithHeaders {
+  headers: Record<string, string | string[] | undefined>;
+}
 
 const USDC_POLYGON = "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359";
 
@@ -48,7 +52,7 @@ export function send402Response(res: any, endpointId: string, customPrice?: bigi
   });
 }
 
-export function extractPayment(req: VercelRequest): PaymentPayload | null {
+export function extractPayment(req: RequestWithHeaders): PaymentPayload | null {
   const header = req.headers["payment-signature"] || req.headers["x-payment-signature"];
   if (!header || typeof header !== "string") return null;
 
@@ -107,7 +111,7 @@ export function verifyPayment(
  * Returns true if paid, false if 402 was sent.
  */
 export function enforceX402(
-  req: VercelRequest,
+  req: RequestWithHeaders,
   res: any,
   endpointId: string,
   customPrice?: bigint
