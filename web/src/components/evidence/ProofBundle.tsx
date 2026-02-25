@@ -6,17 +6,21 @@ import CopyButton from "./CopyButton";
 import EvidenceCard from "./EvidenceCard";
 
 interface ProofBundleData {
-  queryHash: string;
+  queryHash?: string;
   responseHash: string;
-  evidenceRoot: string;
-  evidence: Array<{
+  evidenceRoot?: string;
+  evidence?: Array<{
     chainId: number;
     blockNumber: number;
     txHash?: string;
     address?: string;
     topic0?: string;
   }>;
-  timestamp: number;
+  dataPointers?: Array<{
+    method: string;
+    params: Record<string, unknown>;
+  }>;
+  timestamp: string | number;
 }
 
 interface ProofBundleProps {
@@ -30,6 +34,7 @@ function shortenHash(hash: string): string {
 
 export default function ProofBundle({ proof }: ProofBundleProps) {
   const [expanded, setExpanded] = useState(false);
+  const evidence = proof.evidence ?? [];
 
   return (
     <Card className="space-y-3">
@@ -50,8 +55,8 @@ export default function ProofBundle({ proof }: ProofBundleProps) {
             className="text-xs font-mono"
             style={{ color: "var(--color-text-muted)" }}
           >
-            {proof.evidence.length} evidence item
-            {proof.evidence.length !== 1 ? "s" : ""}
+            {evidence.length} evidence item
+            {evidence.length !== 1 ? "s" : ""}
           </span>
         </div>
         {expanded ? (
@@ -72,22 +77,24 @@ export default function ProofBundle({ proof }: ProofBundleProps) {
           >
             {/* Hashes */}
             <div className="space-y-2 text-xs">
-              <div className="flex items-center gap-2">
-                <FileCheck
-                  size={12}
-                  style={{ color: "var(--color-text-muted)" }}
-                />
-                <span style={{ color: "var(--color-text-secondary)" }}>
-                  Query Hash:
-                </span>
-                <span
-                  className="font-mono"
-                  style={{ color: "var(--color-text-primary)" }}
-                >
-                  {shortenHash(proof.queryHash)}
-                </span>
-                <CopyButton text={proof.queryHash} />
-              </div>
+              {proof.queryHash && (
+                <div className="flex items-center gap-2">
+                  <FileCheck
+                    size={12}
+                    style={{ color: "var(--color-text-muted)" }}
+                  />
+                  <span style={{ color: "var(--color-text-secondary)" }}>
+                    Query Hash:
+                  </span>
+                  <span
+                    className="font-mono"
+                    style={{ color: "var(--color-text-primary)" }}
+                  >
+                    {shortenHash(proof.queryHash)}
+                  </span>
+                  <CopyButton text={proof.queryHash} />
+                </div>
+              )}
 
               <div className="flex items-center gap-2">
                 <FileCheck
@@ -106,22 +113,24 @@ export default function ProofBundle({ proof }: ProofBundleProps) {
                 <CopyButton text={proof.responseHash} />
               </div>
 
-              <div className="flex items-center gap-2">
-                <FileCheck
-                  size={12}
-                  style={{ color: "var(--color-text-muted)" }}
-                />
-                <span style={{ color: "var(--color-text-secondary)" }}>
-                  Evidence Root:
-                </span>
-                <span
-                  className="font-mono"
-                  style={{ color: "var(--color-text-primary)" }}
-                >
-                  {shortenHash(proof.evidenceRoot)}
-                </span>
-                <CopyButton text={proof.evidenceRoot} />
-              </div>
+              {proof.evidenceRoot && (
+                <div className="flex items-center gap-2">
+                  <FileCheck
+                    size={12}
+                    style={{ color: "var(--color-text-muted)" }}
+                  />
+                  <span style={{ color: "var(--color-text-secondary)" }}>
+                    Evidence Root:
+                  </span>
+                  <span
+                    className="font-mono"
+                    style={{ color: "var(--color-text-primary)" }}
+                  >
+                    {shortenHash(proof.evidenceRoot)}
+                  </span>
+                  <CopyButton text={proof.evidenceRoot} />
+                </div>
+              )}
 
               <div className="flex items-center gap-2">
                 <span style={{ color: "var(--color-text-secondary)" }}>
@@ -137,7 +146,7 @@ export default function ProofBundle({ proof }: ProofBundleProps) {
             </div>
 
             {/* Evidence items */}
-            {proof.evidence.length > 0 && (
+            {evidence.length > 0 && (
               <div className="space-y-2">
                 <span
                   className="text-xs font-medium"
@@ -145,7 +154,7 @@ export default function ProofBundle({ proof }: ProofBundleProps) {
                 >
                   Evidence Items
                 </span>
-                {proof.evidence.map((item, i) => (
+                {evidence.map((item, i) => (
                   <EvidenceCard key={i} evidence={item} index={i} />
                 ))}
               </div>
