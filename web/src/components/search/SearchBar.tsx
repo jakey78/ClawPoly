@@ -68,7 +68,7 @@ export default function SearchBar({
           style={{
             backgroundColor: "var(--color-bg-card)",
             border: focused
-              ? "1px solid rgba(45, 212, 191, 0.4)"
+              ? "1px solid var(--color-accent-teal)"
               : "1px solid var(--color-border)",
             padding: isLg ? "1rem 1.5rem" : "0.75rem 1rem",
           }}
@@ -120,8 +120,8 @@ export default function SearchBar({
             disabled={!query.trim()}
             className="flex items-center justify-center p-2.5 rounded-xl transition-all duration-200 cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed"
             style={{
-              background: query.trim() ? "#2dd4bf" : "transparent",
-              color: query.trim() ? "#06060b" : "var(--color-text-muted)",
+              background: query.trim() ? "var(--color-accent-teal)" : "transparent",
+              color: query.trim() ? "#fff" : "var(--color-text-muted)",
             }}
           >
             <ArrowRight size={isLg ? 18 : 14} />

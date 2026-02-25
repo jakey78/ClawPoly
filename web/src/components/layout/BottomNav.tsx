@@ -16,7 +16,7 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
       style={{
-        background: "rgba(6, 6, 11, 0.95)",
+        background: "rgba(255, 255, 255, 0.92)",
         backdropFilter: "blur(24px)",
         WebkitBackdropFilter: "blur(24px)",
         borderTop: "1px solid var(--color-border)",
@@ -34,7 +34,7 @@ export default function BottomNav() {
               className="flex flex-col items-center justify-center no-underline min-w-[52px] min-h-[52px] rounded-2xl transition-all duration-200"
               style={{
                 color: isActive
-                  ? "#2dd4bf"
+                  ? "var(--color-accent-teal)"
                   : "var(--color-text-muted)",
               }}
               aria-label={label}
@@ -44,10 +44,10 @@ export default function BottomNav() {
                 <div
                   className="flex items-center justify-center w-14 h-14 rounded-full -mt-6"
                   style={{
-                    background: "#2dd4bf",
+                    background: "var(--color-accent-teal)",
                   }}
                 >
-                  <Icon size={22} color="#06060b" strokeWidth={2.5} />
+                  <Icon size={22} color="#fff" strokeWidth={2.5} />
                 </div>
               ) : (
                 <>

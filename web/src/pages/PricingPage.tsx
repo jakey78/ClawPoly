@@ -51,11 +51,11 @@ export default function PricingPage() {
             <div
               className="w-12 h-12 rounded-xl flex items-center justify-center"
               style={{
-                background: "rgba(245, 158, 11, 0.1)",
-                border: "1px solid rgba(245, 158, 11, 0.2)",
+                background: "rgba(180, 83, 9, 0.06)",
+                border: "1px solid rgba(180, 83, 9, 0.15)",
               }}
             >
-              <Coins size={22} style={{ color: "#f59e0b" }} />
+              <Coins size={22} style={{ color: "var(--color-accent-amber)" }} />
             </div>
             <div>
               <h1
@@ -85,10 +85,10 @@ export default function PricingPage() {
             }}
           >
             <div className="flex items-center gap-2.5 mb-8">
-              <Zap size={16} style={{ color: "#2dd4bf" }} />
+              <Zap size={16} style={{ color: "var(--color-accent-teal)" }} />
               <h2
                 className="text-sm font-bold tracking-widest uppercase"
-                style={{ color: "#2dd4bf" }}
+                style={{ color: "var(--color-accent-teal)" }}
               >
                 How x402 Payment Works
               </h2>
@@ -107,9 +107,9 @@ export default function PricingPage() {
                     <div
                       className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold"
                       style={{
-                        background: "rgba(45, 212, 191, 0.08)",
-                        color: "#2dd4bf",
-                        border: "1px solid rgba(45, 212, 191, 0.15)",
+                        background: "rgba(13, 148, 136, 0.06)",
+                        color: "var(--color-accent-teal)",
+                        border: "1px solid rgba(13, 148, 136, 0.12)",
                       }}
                     >
                       {s.step}
@@ -140,7 +140,7 @@ export default function PricingPage() {
             <Loader2
               size={28}
               className="animate-spin"
-              style={{ color: "#2dd4bf" }}
+              style={{ color: "var(--color-accent-teal)" }}
             />
           </div>
         )}
@@ -200,15 +200,15 @@ export default function PricingPage() {
                       className="text-right font-mono font-bold text-sm whitespace-nowrap ml-8 px-4 py-2 rounded-full"
                       style={{
                         color:
-                          Number(ep.price) === 0 ? "#22c55e" : "#f59e0b",
+                          Number(ep.price) === 0 ? "var(--color-status-success)" : "var(--color-accent-amber)",
                         background:
                           Number(ep.price) === 0
-                            ? "rgba(34, 197, 94, 0.06)"
-                            : "rgba(245, 158, 11, 0.06)",
+                            ? "rgba(22, 163, 74, 0.06)"
+                            : "rgba(180, 83, 9, 0.06)",
                         border:
                           Number(ep.price) === 0
-                            ? "1px solid rgba(34, 197, 94, 0.12)"
-                            : "1px solid rgba(245, 158, 11, 0.12)",
+                            ? "1px solid rgba(22, 163, 74, 0.12)"
+                            : "1px solid rgba(180, 83, 9, 0.12)",
                       }}
                     >
                       {ep.priceFormatted || formatPrice(ep.price)}

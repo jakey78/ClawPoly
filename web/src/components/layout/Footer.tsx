@@ -10,7 +10,7 @@ export default function Footer() {
     >
       <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between text-xs">
         <div className="flex items-center gap-3">
-          <Hexagon size={14} style={{ color: "#2dd4bf", opacity: 0.4 }} />
+          <Hexagon size={14} style={{ color: "var(--color-accent-teal)", opacity: 0.4 }} />
           <span style={{ color: "var(--color-text-muted)" }}>
             ClawPoly — Pay-Per-Query Polygon Search Engine
           </span>
@@ -22,7 +22,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 no-underline transition-colors"
             style={{ color: "var(--color-text-muted)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#2dd4bf")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-teal)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
           >
             PolygonScan
@@ -34,7 +34,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 no-underline transition-colors"
             style={{ color: "var(--color-text-muted)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#2dd4bf")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-teal)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
           >
             GitHub

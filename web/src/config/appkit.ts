@@ -30,9 +30,9 @@ createAppKit({
     url: typeof window !== "undefined" ? window.location.origin : "https://clawpoly.xyz",
     icons: ["/logo.svg"],
   },
-  themeMode: "dark",
+  themeMode: "light",
   themeVariables: {
-    "--w3m-accent": "#2dd4bf",
+    "--w3m-accent": "#0d9488",
     "--w3m-border-radius-master": "2px",
   },
   features: {

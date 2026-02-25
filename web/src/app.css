@@ -1,38 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* === Colors === */
-  --color-bg-primary: #06060b;
-  --color-bg-secondary: #0b0b13;
-  --color-bg-card: #0d0d16;
-  --color-bg-card-hover: #12121e;
-  --color-bg-input: #0a0a12;
-  --color-bg-base: #06060b;
-  --color-bg-elevated: #141422;
+  /* === Light Warm Theme (Lemon-inspired) === */
+  --color-bg-primary: #faf8f3;
+  --color-bg-secondary: #f3f0e8;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f9f7f2;
+  --color-bg-input: #f3f0e8;
+  --color-bg-base: #faf8f3;
+  --color-bg-elevated: #f3f0e8;
 
-  --color-border: #16162a;
-  --color-border-hover: #22223c;
-  --color-border-default: #16162a;
-  --color-border-subtle: #111120;
+  --color-border: #e8e3d9;
+  --color-border-hover: #d6d0c4;
+  --color-border-default: #e8e3d9;
+  --color-border-subtle: #f0ece4;
 
-  --color-text-primary: #eeeef4;
-  --color-text-secondary: #7e7e9a;
-  --color-text-muted: #4a4a62;
+  --color-text-primary: #1a1816;
+  --color-text-secondary: #6b6560;
+  --color-text-muted: #a09890;
 
-  --color-accent-teal: #2dd4bf;
-  --color-accent-teal-dim: #1a8a7a;
-  --color-accent-amber: #f59e0b;
-  --color-accent-amber-dim: #b27308;
-  --color-accent-purple: #a78bfa;
-  --color-accent-purple-dim: #7c5cbf;
+  --color-accent-teal: #0d9488;
+  --color-accent-teal-dim: #0f766e;
+  --color-accent-amber: #b45309;
+  --color-accent-amber-dim: #92400e;
+  --color-accent-purple: #7c3aed;
+  --color-accent-purple-dim: #6d28d9;
 
-  --color-status-success: #22c55e;
-  --color-status-error: #ef4444;
-  --color-status-warning: #f59e0b;
+  --color-status-success: #16a34a;
+  --color-status-error: #dc2626;
+  --color-status-warning: #d97706;
 
   /* === Fonts === */
   --font-display: "Inter", system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 
   /* === Radii === */
   --radius-sm: 0.5rem;
@@ -41,12 +41,9 @@
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
-
-  /* === Spacing === */
-  --space-page: clamp(1.5rem, 5vw, 3rem);
 }
 
-/* === Base Styles === */
+/* === Base === */
 * {
   margin: 0;
   padding: 0;
@@ -60,7 +57,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 body {
@@ -70,13 +67,12 @@ body {
 
 #root {
   position: relative;
-  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* === Focus Rings === */
+/* === Focus === */
 *:focus-visible {
   outline: 2px solid var(--color-accent-teal);
   outline-offset: 2px;
@@ -84,52 +80,26 @@ body {
 }
 
 /* === Scrollbar === */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-hover);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-hover); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
 
 /* === Selection === */
 ::selection {
-  background-color: rgba(45, 212, 191, 0.15);
+  background-color: rgba(13, 148, 136, 0.15);
   color: var(--color-text-primary);
 }
 
-/* === Gradient text === */
-.gradient-text-teal {
-  background: linear-gradient(135deg, #2dd4bf 0%, #5eead4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* === Accent text === */
+.text-accent { color: var(--color-accent-teal); }
 
-/* === Skeleton animation === */
+/* === Skeleton === */
 @keyframes skeleton-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
 }
-
 .skeleton {
   animation: skeleton-pulse 1.5s ease-in-out infinite;
-  background: var(--color-bg-card-hover);
-}
-
-/* === Divider === */
-.divider {
-  height: 1px;
-  background: var(--color-border);
-  border: none;
+  background: var(--color-bg-elevated);
 }

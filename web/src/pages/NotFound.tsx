@@ -30,8 +30,8 @@ export default function NotFound() {
             to="/"
             className="flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-sm transition-all duration-200 no-underline"
             style={{
-              background: "#2dd4bf",
-              color: "#06060b",
+              background: "var(--color-text-primary)",
+              color: "var(--color-bg-primary)",
             }}
           >
             <Home size={16} />

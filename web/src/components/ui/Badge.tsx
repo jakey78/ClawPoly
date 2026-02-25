@@ -10,39 +10,39 @@ interface BadgeProps {
 
 const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
   default: {
-    background: "rgba(139, 139, 160, 0.15)",
+    background: "rgba(160, 152, 144, 0.1)",
     color: "var(--color-text-secondary)",
-    border: "1px solid rgba(139, 139, 160, 0.2)",
+    border: "1px solid rgba(160, 152, 144, 0.2)",
   },
   success: {
-    background: "rgba(34, 197, 94, 0.12)",
+    background: "rgba(22, 163, 74, 0.08)",
     color: "var(--color-status-success)",
-    border: "1px solid rgba(34, 197, 94, 0.2)",
+    border: "1px solid rgba(22, 163, 74, 0.15)",
   },
   warning: {
-    background: "rgba(245, 158, 11, 0.12)",
+    background: "rgba(217, 119, 6, 0.08)",
     color: "var(--color-status-warning)",
-    border: "1px solid rgba(245, 158, 11, 0.2)",
+    border: "1px solid rgba(217, 119, 6, 0.15)",
   },
   error: {
-    background: "rgba(239, 68, 68, 0.12)",
+    background: "rgba(220, 38, 38, 0.08)",
     color: "var(--color-status-error)",
-    border: "1px solid rgba(239, 68, 68, 0.2)",
+    border: "1px solid rgba(220, 38, 38, 0.15)",
   },
   teal: {
-    background: "rgba(45, 212, 191, 0.12)",
+    background: "rgba(13, 148, 136, 0.08)",
     color: "var(--color-accent-teal)",
-    border: "1px solid rgba(45, 212, 191, 0.2)",
+    border: "1px solid rgba(13, 148, 136, 0.15)",
   },
   amber: {
-    background: "rgba(245, 158, 11, 0.12)",
+    background: "rgba(180, 83, 9, 0.08)",
     color: "var(--color-accent-amber)",
-    border: "1px solid rgba(245, 158, 11, 0.2)",
+    border: "1px solid rgba(180, 83, 9, 0.15)",
   },
   info: {
-    background: "rgba(167, 139, 250, 0.12)",
+    background: "rgba(124, 58, 237, 0.08)",
     color: "var(--color-accent-purple)",
-    border: "1px solid rgba(167, 139, 250, 0.2)",
+    border: "1px solid rgba(124, 58, 237, 0.15)",
   },
 };
 
