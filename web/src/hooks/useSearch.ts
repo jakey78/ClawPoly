@@ -47,7 +47,7 @@ export function useSearch({ query, type, params, enabled = true }: UseSearchOpti
   const endpoint = ENDPOINT_MAP[resolvedType];
 
   const queryResult = useQuery<SearchResult>({
-    queryKey: ["search", resolvedType, query, params, !!walletClient],
+    queryKey: ["search", resolvedType, query, params],
     queryFn: async () => {
       const searchParams: Record<string, string> = {
         ...params,
@@ -77,7 +77,11 @@ export function useSearch({ query, type, params, enabled = true }: UseSearchOpti
     },
     enabled: enabled && !!query.trim() && isConnected && !!walletClient,
     retry: false,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,       // 5 minutes before data is stale
+    gcTime: 10 * 60 * 1000,          // keep in cache 10 minutes
+    refetchOnWindowFocus: false,      // don't re-trigger paid queries on focus
+    refetchOnReconnect: false,        // don't re-trigger on network reconnect
+    refetchOnMount: false,            // use cache if available
   });
 
   return {
