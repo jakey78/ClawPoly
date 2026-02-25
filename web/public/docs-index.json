@@ -1,0 +1,265 @@
+[
+  {
+    "id": "polygon-overview",
+    "title": "What is Polygon?",
+    "body": "Polygon (formerly Matic Network) is an Ethereum Layer 2 scaling solution that provides faster and cheaper transactions. It uses a Proof-of-Stake consensus mechanism and is compatible with the Ethereum Virtual Machine (EVM). The native token is POL (previously MATIC).",
+    "category": "Overview",
+    "url": "https://polygon.technology/polygon-pos"
+  },
+  {
+    "id": "polygon-pos",
+    "title": "Polygon PoS Chain",
+    "body": "Polygon PoS is a commit chain that runs parallel to Ethereum mainnet. Validators stake POL tokens to participate in consensus. Blocks are produced every ~2 seconds with finality achieved through checkpoints submitted to Ethereum.",
+    "category": "Architecture",
+    "url": "https://docs.polygon.technology/pos/"
+  },
+  {
+    "id": "polygon-chainid",
+    "title": "Polygon Chain ID and RPC",
+    "body": "Polygon mainnet uses Chain ID 137. The default public RPC endpoint is https://polygon-bor-rpc.publicnode.com. Other RPC providers include Alchemy, Infura, QuickNode, and Ankr. For reliability, use a dedicated RPC provider rather than the public endpoint.",
+    "category": "Network",
+    "url": "https://docs.polygon.technology/tools/network-details/network/"
+  },
+  {
+    "id": "polygon-gas",
+    "title": "Gas and Transaction Fees",
+    "body": "Gas fees on Polygon are paid in POL (native token). Typical transaction fees are fractions of a cent. Gas prices fluctuate based on network demand. Use eth_gasPrice or eth_feeHistory RPC methods to estimate current fees. EIP-1559 is supported with base fee and priority fee.",
+    "category": "Transactions",
+    "url": "https://docs.polygon.technology/tools/gas/polygon-gas-station/"
+  },
+  {
+    "id": "polygon-usdc",
+    "title": "USDC on Polygon",
+    "body": "Native USDC on Polygon is issued by Circle at address 0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359. It supports EIP-2612 (permit) and EIP-3009 (transferWithAuthorization). The bridged version (USDC.e) is at 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174. Always use native USDC for new integrations.",
+    "category": "Tokens",
+    "url": "https://www.circle.com/en/multi-chain-usdc/polygon"
+  },
+  {
+    "id": "eip-3009",
+    "title": "EIP-3009: Transfer With Authorization",
+    "body": "EIP-3009 allows gasless token transfers via signed authorizations. The transferWithAuthorization function accepts: from, to, value, validAfter, validBefore, nonce, v, r, s. The nonce is a random bytes32 (not sequential). This is used by the x402 payment protocol for USDC payments.",
+    "category": "Standards",
+    "url": "https://eips.ethereum.org/EIPS/eip-3009"
+  },
+  {
+    "id": "eip-1967",
+    "title": "EIP-1967: Proxy Storage Slots",
+    "body": "EIP-1967 defines standard storage slots for proxy contracts. The implementation address is stored at slot 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc. The admin address is at slot 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103. ClawPoly uses this to detect proxy contracts.",
+    "category": "Standards",
+    "url": "https://eips.ethereum.org/EIPS/eip-1967"
+  },
+  {
+    "id": "polygonscan-api",
+    "title": "PolygonScan API",
+    "body": "PolygonScan provides a REST API compatible with the Etherscan API standard. Key modules: account (txlist, tokentx, balance), contract (getabi, getsourcecode), logs (getLogs), proxy (eth_getTransactionByHash). Free tier allows 5 calls/second. An API key is required for higher limits.",
+    "category": "APIs",
+    "url": "https://docs.polygonscan.com/"
+  },
+  {
+    "id": "polygon-bridge",
+    "title": "Polygon Bridge",
+    "body": "The Polygon PoS Bridge connects Ethereum and Polygon networks. It supports both ERC-20 and ERC-721/1155 tokens. Deposits (Ethereum → Polygon) take ~7-8 minutes. Withdrawals (Polygon → Ethereum) require a checkpoint and take ~45 minutes to 3 hours. The bridge uses Plasma and PoS security models.",
+    "category": "Infrastructure",
+    "url": "https://docs.polygon.technology/pos/how-to/bridging/"
+  },
+  {
+    "id": "polygon-tokens",
+    "title": "Token Standards on Polygon",
+    "body": "Polygon supports all EVM token standards: ERC-20 (fungible tokens), ERC-721 (NFTs), ERC-1155 (multi-token), ERC-4626 (tokenized vaults). Native bridged tokens have canonical addresses maintained by the Polygon bridge. Always verify token contract addresses before interacting.",
+    "category": "Tokens",
+    "url": "https://docs.polygon.technology/pos/how-to/smart-contracts/"
+  },
+  {
+    "id": "x402-protocol",
+    "title": "x402 Payment Protocol",
+    "body": "x402 is a payment protocol using HTTP 402 status codes. When a client requests a paid resource, the server responds with 402 Payment Required including payment details (amount, recipient, token). The client signs an EIP-3009 authorization and retries with an X-PAYMENT header containing the signed payload.",
+    "category": "Protocols",
+    "url": "https://www.x402.org/"
+  },
+  {
+    "id": "polygon-validators",
+    "title": "Polygon Validators",
+    "body": "Polygon PoS uses a set of validators who stake POL tokens on Ethereum mainnet. Validators produce blocks on Polygon and periodically submit checkpoints to Ethereum. There are currently ~100 active validators. Delegators can stake with validators to earn rewards without running infrastructure.",
+    "category": "Architecture",
+    "url": "https://docs.polygon.technology/pos/get-started/becoming-a-validator/"
+  },
+  {
+    "id": "polygon-events",
+    "title": "Event Logs and Topics",
+    "body": "Solidity events emit logs stored in transaction receipts. Each log has an address, up to 4 topics (indexed parameters), and a data field. Topic[0] is the keccak256 hash of the event signature. Use eth_getLogs with address, topics, fromBlock, and toBlock parameters to query historical events.",
+    "category": "Development",
+    "url": "https://docs.soliditylang.org/en/latest/abi-spec.html#events"
+  },
+  {
+    "id": "polygon-defi",
+    "title": "DeFi on Polygon",
+    "body": "Polygon hosts major DeFi protocols including Aave, Uniswap V3, QuickSwap, Curve, Balancer, and SushiSwap. The low gas fees make it suitable for frequent trading, yield farming, and lending operations. Total Value Locked (TVL) on Polygon DeFi is tracked by DefiLlama.",
+    "category": "Ecosystem",
+    "url": "https://defillama.com/chain/Polygon"
+  },
+  {
+    "id": "polygon-nfts",
+    "title": "NFTs on Polygon",
+    "body": "Polygon is a popular chain for NFTs due to low minting costs. OpenSea, Rarible, and other marketplaces support Polygon NFTs. The ERC-721 standard is most common for unique NFTs, while ERC-1155 supports semi-fungible tokens. Lens Protocol, a decentralized social graph, uses Polygon NFTs extensively.",
+    "category": "Ecosystem"
+  },
+  {
+    "id": "hardhat-polygon",
+    "title": "Deploying to Polygon with Hardhat",
+    "body": "Configure Hardhat for Polygon by adding a network entry with chainId 137 and an RPC URL. Use @nomicfoundation/hardhat-toolbox for compilation, testing, and verification. Set the Solidity optimizer to 200 runs for gas efficiency. Verify contracts on PolygonScan using the hardhat-verify plugin with your PolygonScan API key.",
+    "category": "Development",
+    "url": "https://hardhat.org/tutorial/deploying-to-a-live-network"
+  },
+  {
+    "id": "polygon-rpc-methods",
+    "title": "Common RPC Methods",
+    "body": "Key JSON-RPC methods for Polygon: eth_getBalance (native balance), eth_getTransactionByHash (tx details), eth_getTransactionReceipt (receipt with logs), eth_getLogs (event query), eth_getCode (contract bytecode), eth_getStorageAt (storage read), eth_blockNumber (latest block), eth_call (read-only call).",
+    "category": "APIs"
+  },
+  {
+    "id": "polygon-approval",
+    "title": "Token Approvals and Allowances",
+    "body": "ERC-20 approvals (approve/transferFrom) allow third parties to spend tokens on your behalf. Unlimited approvals (type(uint256).max) are common but risky. The Approval event (topic0: 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925) logs all approval changes. Regularly review and revoke unnecessary approvals.",
+    "category": "Security"
+  },
+  {
+    "id": "polygon-checkpoints",
+    "title": "Checkpoints and Finality",
+    "body": "Polygon validators periodically submit checkpoints to Ethereum mainnet, typically every 30-60 minutes. A checkpoint contains the Merkle root of all Polygon blocks since the last checkpoint. Once a checkpoint is included in an Ethereum block, all transactions in those Polygon blocks achieve Ethereum-level finality.",
+    "category": "Architecture"
+  },
+  {
+    "id": "polygon-wallets",
+    "title": "Wallet Support",
+    "body": "Major wallets supporting Polygon: MetaMask, WalletConnect-compatible wallets (Trust Wallet, Rainbow, Zerion), Coinbase Wallet, Ledger (via MetaMask), Safe (multisig). Add Polygon to MetaMask with Chain ID 137 and RPC URL. WalletConnect v2 / Reown AppKit provide standardized multi-wallet connection.",
+    "category": "Tools"
+  },
+  {
+    "id": "polygon-subgraphs",
+    "title": "Subgraphs on Polygon",
+    "body": "The Graph Protocol supports Polygon for indexing blockchain data. Subgraphs define event handlers that process onchain events into queryable GraphQL schemas. Major protocols like Uniswap, Aave, and Quickswap maintain Polygon subgraphs. Deploy custom subgraphs via the hosted service or decentralized network.",
+    "category": "Infrastructure",
+    "url": "https://thegraph.com/docs/en/developing/supported-networks/"
+  },
+  {
+    "id": "polygon-oracles",
+    "title": "Oracle Services on Polygon",
+    "body": "Chainlink is the primary oracle provider on Polygon, offering price feeds, VRF (verifiable random), and Automation. Other oracles include API3, Band Protocol, and UMA. Price feed addresses differ between mainnet and testnets. Always use the correct feed address for Polygon mainnet (Chain ID 137).",
+    "category": "Infrastructure"
+  },
+  {
+    "id": "polygon-multicall",
+    "title": "Multicall on Polygon",
+    "body": "Multicall contracts batch multiple read calls into a single RPC request. Multicall3 is deployed at 0xcA11bde05977b3631167028862bE2a173976CA11 on Polygon (same address on all EVM chains). Libraries like viem and ethers.js have built-in multicall support. Use multicall to reduce RPC usage and improve frontend performance.",
+    "category": "Development"
+  },
+  {
+    "id": "polygon-security",
+    "title": "Security Best Practices",
+    "body": "On Polygon: never hardcode private keys or API keys in source code. Use environment variables for secrets. Verify contract source code on PolygonScan. Check token approvals regularly. Use OpenZeppelin contracts for battle-tested implementations. Be cautious of bridged token addresses vs native tokens. Always validate contract addresses from official sources.",
+    "category": "Security"
+  },
+  {
+    "id": "proof-carrying-answers",
+    "title": "Proof-Carrying Answers",
+    "body": "ClawPoly returns proof bundles with every paid query. A proof bundle contains: queryHash (SHA-256 of input), responseHash (SHA-256 of output), evidenceRoot (hash chain of data pointers), and individual evidence items (chainId, blockNumber, txHash). The proof can be independently verified and optionally recorded onchain via SearchReceipt.",
+    "category": "ClawPoly"
+  },
+  {
+    "id": "clawpoly-endpoints",
+    "title": "ClawPoly API Endpoints",
+    "body": "ClawPoly provides 4 paid search endpoints: /api/search/tx (transaction lookup), /api/search/address (address analysis with balance, txs, tokens, counterparties), /api/search/contract (contract info with ABI, source, proxy detection), /api/search/logs (event log query). Plus free endpoints: /api/search/docs and /api/x402/endpoints.",
+    "category": "ClawPoly"
+  },
+  {
+    "id": "clawpoly-contracts",
+    "title": "ClawPoly Smart Contracts",
+    "body": "ClawPoly deploys 5 contracts on Polygon: AccessController (role-based access), EndpointRegistry (API endpoint metadata), PricingRegistry (USDC pricing per endpoint), SearchReceipt (onchain proof attestation), FeeVault (fee distribution with BPS splits). All contracts use Solidity 0.8.24 and OpenZeppelin v5.2.",
+    "category": "ClawPoly"
+  },
+  {
+    "id": "polygon-zkevm",
+    "title": "Polygon zkEVM",
+    "body": "Polygon zkEVM is a zero-knowledge rollup that provides EVM-equivalent execution with ZK proof security. It's separate from Polygon PoS. zkEVM generates ZK proofs for each batch of transactions, providing Ethereum-level security guarantees. It uses a different chain ID (1101) from Polygon PoS (137).",
+    "category": "Architecture",
+    "url": "https://docs.polygon.technology/zkEVM/"
+  },
+  {
+    "id": "polygon-agglayer",
+    "title": "Polygon AggLayer",
+    "body": "AggLayer (Aggregation Layer) is Polygon's vision for unifying L2 chains. It aggregates ZK proofs from multiple chains into a single proof verified on Ethereum. This enables cross-chain interoperability and shared liquidity between Polygon-based chains including PoS, zkEVM, and CDK chains.",
+    "category": "Architecture",
+    "url": "https://docs.polygon.technology/agglayer/overview/"
+  },
+  {
+    "id": "polygon-cdk",
+    "title": "Polygon CDK",
+    "body": "Polygon Chain Development Kit (CDK) enables developers to launch their own ZK-powered L2 chains connected to the AggLayer. CDK chains can customize their execution environment, data availability, and sequencer setup while maintaining interoperability through the AggLayer. It uses the same proving system as Polygon zkEVM.",
+    "category": "Architecture",
+    "url": "https://docs.polygon.technology/cdk/"
+  },
+  {
+    "id": "polygon-pol-token",
+    "title": "POL Token",
+    "body": "POL is the native token of the Polygon ecosystem, replacing MATIC through a 1:1 migration. POL is used for gas fees on Polygon PoS, staking and validation, and governance. The token contract on Ethereum is an ERC-20. On Polygon PoS, POL is the native gas token (like ETH on Ethereum).",
+    "category": "Tokens",
+    "url": "https://polygon.technology/blog/polygon-2-0-tokenomics"
+  },
+  {
+    "id": "polygon-erc4337",
+    "title": "Account Abstraction (ERC-4337)",
+    "body": "Polygon supports ERC-4337 account abstraction. The EntryPoint contract is deployed at the canonical address. Account abstraction enables smart contract wallets with features like social recovery, session keys, gas sponsorship (paymasters), and batched transactions. Popular implementations include Safe, Biconomy, and ZeroDev.",
+    "category": "Standards"
+  },
+  {
+    "id": "polygon-data-availability",
+    "title": "Data Availability on Polygon",
+    "body": "Polygon PoS posts transaction data to Ethereum via checkpoints. For CDK chains, data availability can be configured: Ethereum calldata, DAC (Data Availability Committee), or dedicated DA layers. Proper data availability ensures anyone can reconstruct the chain state independently.",
+    "category": "Architecture"
+  },
+  {
+    "id": "polygon-tx-types",
+    "title": "Transaction Types",
+    "body": "Polygon supports multiple transaction types: Type 0 (legacy with gasPrice), Type 2 (EIP-1559 with maxFeePerGas and maxPriorityFeePerGas). Type 2 transactions are recommended for more predictable gas pricing. The baseFee adjusts automatically based on block utilization, similar to Ethereum post-merge.",
+    "category": "Transactions"
+  },
+  {
+    "id": "polygon-internal-tx",
+    "title": "Internal Transactions",
+    "body": "Internal transactions are value transfers or contract calls initiated by smart contracts during execution. They don't appear in the standard transaction list but can be queried via PolygonScan's txlistinternal API or by tracing transactions. Internal transactions are important for tracking fund flows through DeFi protocols.",
+    "category": "Transactions"
+  },
+  {
+    "id": "polygon-block-explorer",
+    "title": "Block Explorers",
+    "body": "PolygonScan (polygonscan.com) is the primary block explorer for Polygon PoS. It provides transaction lookup, contract verification, token tracking, and API access. Alternative explorers include Blockscout, OKLink, and Dora. All support the standard transaction and address lookup features.",
+    "category": "Tools",
+    "url": "https://polygonscan.com"
+  },
+  {
+    "id": "polygon-contract-verification",
+    "title": "Contract Verification",
+    "body": "Verify Solidity contracts on PolygonScan to make source code publicly readable. Verification matches compiled bytecode to source code. Use Hardhat's verify plugin: npx hardhat verify --network polygon <address> <constructor-args>. Verified contracts show a green checkmark and allow direct interaction through PolygonScan's Read/Write Contract tabs.",
+    "category": "Development"
+  },
+  {
+    "id": "polygon-safe-multisig",
+    "title": "Safe (Gnosis Safe) on Polygon",
+    "body": "Safe multisig wallets are deployed on Polygon for secure fund management. SafeL2 is the recommended implementation for L2 chains. Safe supports arbitrary transaction execution, multiple signers with M-of-N thresholds, and integration with DeFi protocols. The Safe web app supports Polygon natively.",
+    "category": "Tools",
+    "url": "https://app.safe.global"
+  },
+  {
+    "id": "polygon-indexing",
+    "title": "Indexing Polygon Data",
+    "body": "For indexing Polygon blockchain data, options include: The Graph (subgraphs), direct RPC polling with eth_getLogs, PolygonScan API, Dune Analytics (SQL queries), Goldfinch/Transpose (indexed APIs). For real-time data, WebSocket subscriptions via eth_subscribe are available on supported RPC providers.",
+    "category": "Infrastructure"
+  },
+  {
+    "id": "polygon-testing",
+    "title": "Testing on Polygon",
+    "body": "For testing, use Polygon Amoy testnet (Chain ID 80002, replacing Mumbai). Get test POL from the Polygon faucet. For local development, use Hardhat Network which forks Polygon mainnet state. Hardhat fork mode allows testing against real contract state without spending real tokens.",
+    "category": "Development",
+    "url": "https://docs.polygon.technology/tools/wallets/metamask/add-polygon-network/"
+  }
+]

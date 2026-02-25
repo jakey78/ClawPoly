@@ -1,0 +1,23 @@
+{
+  "name": "clawpoly-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.ts --network polygon",
+    "verify": "hardhat run scripts/verify.ts --network polygon",
+    "copy-deployments": "tsx scripts/copy-deployments.ts",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.2.0",
+    "dotenv": "^16.4.0",
+    "hardhat": "^2.22.0",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}

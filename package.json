@@ -1,0 +1,27 @@
+{
+  "name": "clawpoly",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pay-Per-Query Polygon Search Engine for AI Agents",
+  "workspaces": [
+    "web",
+    "contracts"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspace=web",
+    "build:contracts": "npm run compile --workspace=contracts",
+    "test:contracts": "npm run test --workspace=contracts",
+    "deploy:polygon": "npm run deploy --workspace=contracts && npm run copy:deployments",
+    "verify:polygon": "npm run verify --workspace=contracts",
+    "copy:deployments": "npm run copy-deployments --workspace=contracts",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\" --ignore-path .gitignore",
+    "build:docs-index": "npx tsx scripts/build-docs-index.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

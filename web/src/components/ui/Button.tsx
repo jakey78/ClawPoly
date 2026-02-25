@@ -1,0 +1,77 @@
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+
+type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+type ButtonSize = "sm" | "md" | "lg";
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  children: ReactNode;
+  loading?: boolean;
+}
+
+const variantStyles: Record<ButtonVariant, React.CSSProperties> = {
+  primary: {
+    background: "var(--color-accent-teal)",
+    color: "#0a0a0f",
+    border: "none",
+  },
+  secondary: {
+    background: "transparent",
+    color: "var(--color-accent-amber)",
+    border: "1px solid var(--color-accent-amber)",
+  },
+  ghost: {
+    background: "transparent",
+    color: "var(--color-text-secondary)",
+    border: "1px solid var(--color-border)",
+  },
+  danger: {
+    background: "var(--color-status-error)",
+    color: "#fff",
+    border: "none",
+  },
+};
+
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: "px-3 py-1.5 text-xs",
+  md: "px-4 py-2 text-sm",
+  lg: "px-6 py-3 text-base",
+};
+
+export default function Button({
+  variant = "primary",
+  size = "md",
+  children,
+  loading,
+  disabled,
+  className = "",
+  style,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      className={`inline-flex items-center justify-center gap-2 font-medium rounded-lg transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${sizeClasses[size]} ${className}`}
+      style={{
+        ...variantStyles[variant],
+        ...style,
+      }}
+      disabled={disabled || loading}
+      {...props}
+    >
+      {loading && (
+        <svg
+          className="animate-spin h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="10" opacity="0.25" />
+          <path d="M12 2a10 10 0 0 1 10 10" opacity="0.75" />
+        </svg>
+      )}
+      {children}
+    </button>
+  );
+}
