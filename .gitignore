@@ -39,5 +39,8 @@ npm-debug.log*
 coverage/
 .nyc_output/
 
+# About (local only)
+about.md
+
 # Misc
 *.tsbuildinfo
