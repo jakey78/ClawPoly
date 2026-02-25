@@ -5,7 +5,7 @@ import { Home, Search } from "lucide-react";
 export default function NotFound() {
   return (
     <AnimatedPage>
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-8 sm:px-12">
         <div
           className="text-8xl font-mono font-bold mb-6"
           style={{ color: "var(--color-accent-teal)" }}

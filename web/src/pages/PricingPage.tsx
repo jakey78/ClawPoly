@@ -44,7 +44,7 @@ export default function PricingPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-3xl mx-auto flex flex-col">
+      <div className="max-w-3xl mx-auto flex flex-col px-6 sm:px-10 lg:px-16 pt-8 md:pt-14">
         {/* Header */}
         <section className="pt-4 pb-14 md:pb-20">
           <div className="flex items-center gap-4 mb-4">

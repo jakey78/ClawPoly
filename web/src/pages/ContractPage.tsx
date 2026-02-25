@@ -30,7 +30,7 @@ export default function ContractPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-4xl mx-auto flex flex-col gap-8 pt-4">
+      <div className="max-w-4xl mx-auto flex flex-col gap-8 px-6 sm:px-10 lg:px-16 pt-8 md:pt-14">
         <SearchBar size="sm" />
 
         {/* Header */}

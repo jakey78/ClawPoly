@@ -15,7 +15,7 @@ export default function Layout({ children }: LayoutProps) {
     >
       <Navbar />
 
-      <main className="flex-1 w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 pb-32 md:pb-20 pt-2 md:pt-4">
+      <main className="flex-1 w-full pb-32 md:pb-20">
         {children}
       </main>
 

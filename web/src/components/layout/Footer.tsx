@@ -3,12 +3,12 @@ import { ExternalLink, Hexagon } from "lucide-react";
 export default function Footer() {
   return (
     <footer
-      className="hidden md:block py-10 mt-auto"
+      className="hidden md:block py-12 mt-auto"
       style={{
         borderTop: "1px solid var(--color-border)",
       }}
     >
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between text-xs">
+      <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-20 flex items-center justify-between text-xs">
         <div className="flex items-center gap-3">
           <Hexagon size={14} style={{ color: "var(--color-accent-teal)", opacity: 0.4 }} />
           <span style={{ color: "var(--color-text-muted)" }}>
