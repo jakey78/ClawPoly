@@ -3,7 +3,7 @@ import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import { polygon } from "@reown/appkit/networks";
 import { QueryClient } from "@tanstack/react-query";
 
-const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || "";
+const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || "844a7e9aa7dafbe14373148bf82129ca";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,6 +23,7 @@ export const wagmiAdapter = new WagmiAdapter({
 createAppKit({
   adapters: [wagmiAdapter],
   networks: [polygon],
+  defaultNetwork: polygon,
   projectId,
   metadata: {
     name: "ClawPoly",
