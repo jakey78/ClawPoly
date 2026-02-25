@@ -6,10 +6,40 @@
 [functions]
   node_bundler = "esbuild"
 
-# Route /api/* → Netlify functions (preserves subpath)
+# Explicit API → Netlify function mapping (flat function names)
 [[redirects]]
-  from   = "/api/*"
-  to     = "/.netlify/functions/:splat"
+  from   = "/api/health"
+  to     = "/.netlify/functions/health"
+  status = 200
+
+[[redirects]]
+  from   = "/api/search/tx"
+  to     = "/.netlify/functions/search-tx"
+  status = 200
+
+[[redirects]]
+  from   = "/api/search/address"
+  to     = "/.netlify/functions/search-address"
+  status = 200
+
+[[redirects]]
+  from   = "/api/search/contract"
+  to     = "/.netlify/functions/search-contract"
+  status = 200
+
+[[redirects]]
+  from   = "/api/search/logs"
+  to     = "/.netlify/functions/search-logs"
+  status = 200
+
+[[redirects]]
+  from   = "/api/search/docs"
+  to     = "/.netlify/functions/search-docs"
+  status = 200
+
+[[redirects]]
+  from   = "/api/x402/endpoints"
+  to     = "/.netlify/functions/x402-endpoints"
   status = 200
 
 # SPA fallback

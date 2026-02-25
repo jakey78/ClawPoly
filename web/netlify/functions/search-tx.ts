@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
-import { createAdapter } from "../_adapter";
-import originalHandler from "../../../api/x402/endpoints";
+import { createAdapter } from "./_adapter";
+import originalHandler from "../../api/search/tx";
 
 export const handler: Handler = async (event) => {
   const { req, res, responsePromise } = createAdapter(event);
