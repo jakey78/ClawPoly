@@ -41,9 +41,9 @@ export default function RecentSearches() {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4 mt-8">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <Clock size={14} style={{ color: "var(--color-text-muted)" }} />
           <span
             className="text-sm font-medium"
@@ -68,13 +68,13 @@ export default function RecentSearches() {
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-3">
         {searches.slice(0, 10).map((s) => {
           const Icon = TYPE_ICONS[s.type];
           return (
             <div
               key={`${s.type}-${s.query}`}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-xs group cursor-pointer transition-colors"
+              className="flex items-center gap-2.5 px-4 py-2 rounded-full border text-xs group cursor-pointer transition-colors"
               style={{
                 backgroundColor: "var(--color-bg-card)",
                 borderColor: "var(--color-border-default)",

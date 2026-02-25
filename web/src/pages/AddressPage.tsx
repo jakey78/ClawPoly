@@ -30,7 +30,7 @@ export default function AddressPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-4xl mx-auto space-y-6 py-6">
+      <div className="max-w-4xl mx-auto flex flex-col gap-8 pt-4">
         <SearchBar size="sm" />
 
         {/* Header */}

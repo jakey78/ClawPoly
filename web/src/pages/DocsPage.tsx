@@ -10,16 +10,16 @@ export default function DocsPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-3xl mx-auto space-y-6 py-6">
+      <div className="max-w-3xl mx-auto flex flex-col">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
+        <section className="pt-4 pb-10 md:pb-14">
+          <div className="flex items-center gap-4 mb-4">
             <BookOpen
               size={24}
               style={{ color: "var(--color-accent-teal)" }}
             />
             <h1
-              className="text-2xl font-bold"
+              className="text-3xl font-bold tracking-tight"
               style={{ color: "var(--color-text-primary)" }}
             >
               Polygon Docs
@@ -27,13 +27,13 @@ export default function DocsPage() {
             <Badge variant="success">Free</Badge>
           </div>
           <p
-            className="text-sm"
+            className="text-base leading-relaxed max-w-lg"
             style={{ color: "var(--color-text-secondary)" }}
           >
             Search the curated Polygon knowledge base. No wallet or payment
             required.
           </p>
-        </div>
+        </section>
 
         {/* Search */}
         <div className="relative">
@@ -68,7 +68,7 @@ export default function DocsPage() {
 
         {/* Results */}
         {results.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-4 mt-8">
             <span
               className="text-xs"
               style={{ color: "var(--color-text-muted)" }}
@@ -112,7 +112,7 @@ export default function DocsPage() {
         {/* Empty state */}
         {!loading && query.trim() && results.length === 0 && !error && (
           <div
-            className="text-center py-12"
+            className="text-center py-20"
             style={{ color: "var(--color-text-muted)" }}
           >
             <Search size={40} className="mx-auto mb-3 opacity-50" />
@@ -123,7 +123,7 @@ export default function DocsPage() {
         {/* Idle state */}
         {!query.trim() && (
           <div
-            className="text-center py-12"
+            className="text-center py-20"
             style={{ color: "var(--color-text-muted)" }}
           >
             <BookOpen size={40} className="mx-auto mb-3 opacity-50" />

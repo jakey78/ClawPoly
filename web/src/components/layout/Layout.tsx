@@ -9,11 +9,16 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col" style={{ fontFamily: "var(--font-display)" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ fontFamily: "var(--font-display)" }}
+    >
       <Navbar />
-      <main className="flex-1 w-full max-w-7xl mx-auto px-[var(--space-page)] pb-24 md:pb-8 pt-4">
+
+      <main className="flex-1 w-full max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 pb-32 md:pb-20 pt-10 md:pt-16">
         {children}
       </main>
+
       <Footer />
       <BottomNav />
     </div>

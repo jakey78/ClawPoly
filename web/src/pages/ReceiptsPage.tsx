@@ -16,29 +16,29 @@ export default function ReceiptsPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-3xl mx-auto space-y-6 py-6">
+      <div className="max-w-3xl mx-auto flex flex-col gap-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
+        <section className="pt-4 pb-6">
+          <div className="flex items-center gap-4 mb-4">
             <FileCheck
               size={24}
               style={{ color: "var(--color-accent-teal)" }}
             />
             <h1
-              className="text-2xl font-bold"
+              className="text-3xl font-bold tracking-tight"
               style={{ color: "var(--color-text-primary)" }}
             >
               Search Receipts
             </h1>
           </div>
           <p
-            className="text-sm"
+            className="text-base leading-relaxed max-w-lg"
             style={{ color: "var(--color-text-secondary)" }}
           >
             Onchain attestation records for search queries. Each receipt links a
             query hash, response hash, and evidence root.
           </p>
-        </div>
+        </section>
 
         {/* Wallet status */}
         {!isConnected && (

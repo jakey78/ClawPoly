@@ -49,7 +49,7 @@ const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
 export default function Badge({ variant = "default", children, className = "" }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium ${className}`}
+      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${className}`}
       style={variantStyles[variant]}
     >
       {children}

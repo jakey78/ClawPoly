@@ -30,26 +30,26 @@ export default function AdminPage() {
 
   return (
     <AnimatedPage>
-      <div className="max-w-3xl mx-auto space-y-6 py-6">
+      <div className="max-w-3xl mx-auto flex flex-col gap-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
+        <section className="pt-4 pb-6">
+          <div className="flex items-center gap-4 mb-4">
             <Shield size={24} style={{ color: "var(--color-accent-amber)" }} />
             <h1
-              className="text-2xl font-bold"
+              className="text-3xl font-bold tracking-tight"
               style={{ color: "var(--color-text-primary)" }}
             >
               Admin Panel
             </h1>
           </div>
           <p
-            className="text-sm"
+            className="text-base leading-relaxed max-w-lg"
             style={{ color: "var(--color-text-secondary)" }}
           >
             Manage endpoints, pricing, and access control for ClawPoly
             contracts.
           </p>
-        </div>
+        </section>
 
         {/* Not connected */}
         {!isConnected && (
@@ -101,7 +101,7 @@ export default function AdminPage() {
 
         {/* Authorized */}
         {isConnected && !isLoading && (isAdmin || isOperator) && (
-          <div className="space-y-4">
+          <div className="flex flex-col gap-6">
             <Card className="space-y-3">
               <div className="flex items-center gap-2">
                 <span

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface CardProps {
@@ -9,41 +8,37 @@ interface CardProps {
   onClick?: () => void;
 }
 
-export default function Card({ children, className = "", hover = false, glow, onClick }: CardProps) {
+export default function Card({ children, className = "", hover = false, onClick }: CardProps) {
   const baseStyle: React.CSSProperties = {
     background: "var(--color-bg-card)",
     border: "1px solid var(--color-border)",
-    borderRadius: "var(--radius-xl)",
+    borderRadius: "var(--radius-2xl)",
+    transition: "border-color 0.2s, background 0.2s",
   };
-
-  if (hover) {
-    return (
-      <motion.div
-        className={`p-5 ${onClick ? "cursor-pointer" : ""} ${className}`}
-        style={baseStyle}
-        whileHover={{
-          borderColor: "var(--color-border-hover)",
-          background: "var(--color-bg-card-hover)",
-          boxShadow: glow
-            ? `0 8px 32px ${glow}`
-            : "0 8px 32px rgba(45, 212, 191, 0.06), 0 0 0 1px rgba(255,255,255,0.02)",
-          y: -2,
-        }}
-        transition={{ duration: 0.2 }}
-        onClick={onClick}
-        role={onClick ? "button" : undefined}
-        tabIndex={onClick ? 0 : undefined}
-      >
-        {children}
-      </motion.div>
-    );
-  }
 
   return (
     <div
-      className={`p-5 ${className}`}
+      className={`p-7 md:p-8 ${onClick ? "cursor-pointer" : ""} ${className}`}
       style={baseStyle}
       onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onMouseEnter={
+        hover
+          ? (e) => {
+              e.currentTarget.style.borderColor = "var(--color-border-hover)";
+              e.currentTarget.style.background = "var(--color-bg-card-hover)";
+            }
+          : undefined
+      }
+      onMouseLeave={
+        hover
+          ? (e) => {
+              e.currentTarget.style.borderColor = "var(--color-border)";
+              e.currentTarget.style.background = "var(--color-bg-card)";
+            }
+          : undefined
+      }
     >
       {children}
     </div>

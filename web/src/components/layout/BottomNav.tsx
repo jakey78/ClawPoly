@@ -16,22 +16,22 @@ export default function BottomNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
       style={{
-        background: "rgba(6, 6, 11, 0.92)",
-        backdropFilter: "blur(20px) saturate(1.2)",
-        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
-        borderTop: "1px solid rgba(26, 26, 46, 0.8)",
+        background: "rgba(6, 6, 11, 0.95)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderTop: "1px solid var(--color-border)",
       }}
       role="navigation"
       aria-label="Bottom navigation"
     >
-      <div className="flex items-center justify-around h-16 px-2">
+      <div className="flex items-center justify-around h-[72px] px-4">
         {NAV_ITEMS.map(({ path, label, icon: Icon, center }) => {
           const isActive = location.pathname === path;
           return (
             <Link
               key={path}
               to={path === "/search" ? "/" : path}
-              className="flex flex-col items-center justify-center no-underline min-w-[48px] min-h-[48px] rounded-xl transition-all duration-200"
+              className="flex flex-col items-center justify-center no-underline min-w-[52px] min-h-[52px] rounded-2xl transition-all duration-200"
               style={{
                 color: isActive
                   ? "#2dd4bf"
@@ -42,10 +42,9 @@ export default function BottomNav() {
             >
               {center ? (
                 <div
-                  className="flex items-center justify-center w-12 h-12 rounded-2xl -mt-5"
+                  className="flex items-center justify-center w-14 h-14 rounded-full -mt-6"
                   style={{
-                    background: "linear-gradient(135deg, #2dd4bf, #14b8a6)",
-                    boxShadow: "0 4px 24px rgba(45, 212, 191, 0.35)",
+                    background: "#2dd4bf",
                   }}
                 >
                   <Icon size={22} color="#06060b" strokeWidth={2.5} />
@@ -53,7 +52,7 @@ export default function BottomNav() {
               ) : (
                 <>
                   <Icon size={20} />
-                  <span className="text-[10px] mt-0.5 font-medium">{label}</span>
+                  <span className="text-[10px] mt-1 font-medium">{label}</span>
                 </>
               )}
             </Link>

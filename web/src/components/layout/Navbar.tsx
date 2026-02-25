@@ -16,55 +16,66 @@ export default function Navbar() {
     <header
       className="sticky top-0 z-50 hidden md:block"
       style={{
-        background: "rgba(6, 6, 11, 0.8)",
-        backdropFilter: "blur(20px) saturate(1.2)",
-        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
-        borderBottom: "1px solid rgba(26, 26, 46, 0.8)",
+        background: "rgba(6, 6, 11, 0.85)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderBottom: "1px solid var(--color-border)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-[var(--space-page)] flex items-center justify-between h-16">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 no-underline group"
+          className="flex items-center gap-3 no-underline"
           aria-label="ClawPoly Home"
         >
           <div className="relative">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" stroke="#2dd4bf" strokeWidth="2" fill="none" />
-              <polygon points="16,6 24,11 24,21 16,26 8,21 8,11" stroke="#f59e0b" strokeWidth="1.5" fill="none" opacity="0.5" />
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <polygon
+                points="16,2 28,9 28,23 16,30 4,23 4,9"
+                stroke="#2dd4bf"
+                strokeWidth="2"
+                fill="none"
+              />
               <circle cx="16" cy="16" r="3" fill="#2dd4bf" />
             </svg>
-            <div
-              className="absolute inset-0 rounded-full opacity-40 blur-md"
-              style={{ background: "rgba(45, 212, 191, 0.3)" }}
-            />
           </div>
           <span
-            className="text-lg font-bold tracking-tight"
+            className="text-base font-bold tracking-tight"
             style={{ color: "var(--color-text-primary)" }}
           >
             Claw<span style={{ color: "#2dd4bf" }}>Poly</span>
           </span>
         </Link>
 
-        {/* Nav Links */}
-        <nav className="flex items-center gap-0.5" role="navigation" aria-label="Main navigation">
+        {/* Center nav — pill container */}
+        <nav
+          className="flex items-center gap-1 px-1.5 py-1.5 rounded-full"
+          style={{
+            background: "rgba(255, 255, 255, 0.04)",
+            border: "1px solid var(--color-border)",
+          }}
+          role="navigation"
+          aria-label="Main navigation"
+        >
           {NAV_ITEMS.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname === path || (path !== "/" && location.pathname.startsWith(path));
+            const isActive =
+              location.pathname === path ||
+              (path !== "/" && location.pathname.startsWith(path));
             return (
               <Link
                 key={path}
                 to={path}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 no-underline"
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 no-underline"
                 style={{
-                  color: isActive ? "#2dd4bf" : "var(--color-text-secondary)",
-                  background: isActive ? "rgba(45, 212, 191, 0.1)" : "transparent",
-                  boxShadow: isActive ? "0 0 12px rgba(45, 212, 191, 0.08)" : "none",
+                  color: isActive ? "#06060b" : "var(--color-text-secondary)",
+                  background: isActive
+                    ? "#2dd4bf"
+                    : "transparent",
                 }}
                 aria-current={isActive ? "page" : undefined}
               >
-                <Icon size={15} />
+                <Icon size={14} />
                 {label}
               </Link>
             );
