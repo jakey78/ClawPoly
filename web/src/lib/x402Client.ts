@@ -95,6 +95,7 @@ export async function signPayment(
   };
 
   const signature = await walletClient.signTypedData({
+    account: walletClient.account!,
     domain: USDC_DOMAIN,
     types: TRANSFER_WITH_AUTH_TYPES,
     primaryType: "TransferWithAuthorization",

@@ -1,6 +1,7 @@
 import { useReadContract, useReadContracts } from "wagmi";
 import { searchReceiptContract } from "@/config/contracts";
 import { useMemo } from "react";
+import { type Abi } from "viem";
 
 export interface SearchReceipt {
   queryHash: `0x${string}`;
@@ -41,6 +42,7 @@ export function useReceipts(queryHashes: `0x${string}`[]) {
     () =>
       queryHashes.map((qh) => ({
         ...searchReceiptContract,
+        abi: searchReceiptContract.abi as Abi,
         functionName: "getReceipt" as const,
         args: [qh] as const,
       })),
